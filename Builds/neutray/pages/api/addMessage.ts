@@ -29,7 +29,7 @@ export default async function handler(
 
 // push to upstash redis db
 
-    await redis.hset('message', message.id, JSON.stringify(newMessage))
+    await redis.hset('messages', message.id, JSON.stringify(newMessage))
 
     res.status(200).json({ message: newMessage })
 }

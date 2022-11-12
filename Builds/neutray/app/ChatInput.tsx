@@ -2,9 +2,13 @@
 import { FormEvent, useState } from "react"
 import { v4 as uuid } from 'uuid'
 import { Message } from "../typings"
+import useSWR from 'swr'
+import fetcher from "../utils/fetchMessages"
 
 function ChatInput() {
     const [input, setInput] = useState("")
+    const {data, error, mutate} = useSWR('/api/getMessage', fetcher)
+
     const addMessage = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
@@ -25,7 +29,7 @@ function ChatInput() {
         }
 
         const uploadMessageToUpstash = async () => {
-            const res = await fetch('/api/addMessage', {
+            const res = await fetch("/api/addMessage", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -36,9 +40,14 @@ function ChatInput() {
             })
 
             const data = await res.json()
+            console.log("Message Added", data)
         }
 
+        uploadMessageToUpstash()
+
     }
+
+
   return (
     <form  onSubmit={addMessage} className='fixed bottom-0 z-50 w-full flex  px-10 py-2 space-x-2'>
         <input 

@@ -1,3 +1,5 @@
+import { ImgHTMLAttributes } from "react"
+
 export type Message = {
             id: string
             message: string

@@ -13,7 +13,7 @@ function Header() {
                         className='rounded-full mx-2 object-contain'
                         height={10}
                         width={50}
-                        src="https://links.papareact.com/jne" 
+                        src="https://gravatar.com/avatar/59d8f3699b35d5837e046ac62a3390c5?s=400&d=identicon&r=x" 
                         alt="logo"
                     
                     />

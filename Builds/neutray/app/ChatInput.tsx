@@ -26,7 +26,7 @@ function ChatInput() {
             message: messageToSend,
             created_at: Date.now(),
             username: 'SiRi',
-            profilePicture: 'https://github.com/roshray/roshray/blob/master/gitProfile.png',
+            profilePic: 'https://avatars.dicebear.com/v2/gridy/59d8f3699b35d5837e046ac62a3390c5.svg',
             email: 'sirialexa@gmail.com',
         }
 
@@ -45,7 +45,10 @@ function ChatInput() {
             
         }
 
-        await mutate(uploadMessageToUpstash)
+        await mutate(uploadMessageToUpstash), {
+            optimisticData: [message, ...messages!],
+            rollbackOnError: true,
+        }
 
     }
 

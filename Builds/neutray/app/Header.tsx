@@ -1,10 +1,11 @@
 import Image from 'next/image'
 import Link from "next/link"
 import LogoutButton from './LogoutButton'
+import {unstable_getServerSession } from "next-auth/next"
 
-function Header() {
-    const session = true
+async function Header() {
     
+    const session = await unstable_getServerSession()    
 
     if  (session) return (
             <header className='sticky top-0 z-50 bg-white flex justify-between items-center p-10 shadow-sm'>
@@ -13,14 +14,14 @@ function Header() {
                         className='rounded-full mx-2 object-contain'
                         height={10}
                         width={50}
-                        src="https://gravatar.com/avatar/59d8f3699b35d5837e046ac62a3390c5?s=400&d=identicon&r=x" 
+                        src={session?.user?.image!} 
                         alt="logo"
                     
                     />
                     
                     <div>
                         <p className='text-blue-400'>Logged in as:</p>
-                        <p className='font-bold text-lg'>SiRi</p>
+                        <p className='font-bold text-lg'>{session?.user?.name}</p>
                     </div>
                 </div>
 
@@ -33,7 +34,7 @@ function Header() {
 
         <div className="flex flex-col items-center space-y-5">
             <div className="flex space-x-2 items-center">
-                <Image src="https://links.papareact.com/jne" alt='Logo' height={10} width={50}/>
+                <Image src="https://gravatar.com/avatar/59d8f3699b35d5837e046ac62a3390c5?s=400&d=identicon&r=x" alt='Logo' height={10} width={50}/>
 
                 <p className="text-blue-400">Welcome to Hike Messenger!</p>
             </div>

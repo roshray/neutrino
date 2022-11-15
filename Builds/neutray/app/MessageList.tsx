@@ -49,7 +49,6 @@ function MessageList({ intialMessages}: Props) {
       {(messages || intialMessages).map((message) => (
         <MessageComponent key={message.id} message={message}/>
       ))}
-      Message delivered here!
       
     </div>
   )

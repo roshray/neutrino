@@ -5,14 +5,20 @@ import { Message } from "../typings"
 import useSWR from 'swr'
 import fetcher from "../utils/fetchMessages"
 
-function ChatInput() {
+import { unstable_getServerSession } from "next-auth/next"
+
+type Props= {
+    session:Awaited<ReturnType<typeof unstable_getServerSession>>
+}
+
+function ChatInput({session}: Props) {
     const [input, setInput] = useState("")
     const {data:messages, error, mutate} = useSWR('/api/getMessage', fetcher)
 
     const addMessage = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        if (!input) return
+        if (!input || !session) return
 
         const messageToSend = input
         setInput('')
@@ -23,9 +29,9 @@ function ChatInput() {
             id,
             message: messageToSend,
             created_at: Date.now(),
-            username: 'SiRi',
-            profilePic: 'https://gravatar.com/avatar/59d8f3699b35d5837e046ac62a3390c5?s=400&d=robohash&r=x',
-            email: 'sirialexa@gmail.com',
+            username: session?.user?.name!,
+            profilePicture: session?.user?.image!,
+            email: session?.user?.email!,
         }
 
         const uploadMessageToUpstash = async () => {
@@ -50,12 +56,12 @@ function ChatInput() {
 
     }
 
-
   return (
     <form  onSubmit={addMessage} className='fixed bottom-0 z-50 w-full flex  px-10 py-2 space-x-2'>
         <input 
             type="text"
             value={input}
+            disabled={!session}
             onChange={e => setInput(e.target.value)} 
             placeholder='Enter a message' 
             className='flex-1 rounded border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent px-5 py-3 disabled:opacity-50 disabled:cursor-not-allowed' />

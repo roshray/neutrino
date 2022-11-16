@@ -7,10 +7,10 @@ import MessageComponent from './MessageComponent'
 import { clientpusher } from '../pusher'
 
 type Props = {
-  intialMessages: Message[]
+  initialMessages: Message[]
 }
 
-function MessageList({ intialMessages}: Props) {
+function MessageList({ initialMessages}: Props) {
   const {
     data:messages, 
     error,mutate,
@@ -46,8 +46,8 @@ function MessageList({ intialMessages}: Props) {
 
   return (
     <div className='space-y-5 px-5 pt-8 pb-32 max-w-2xl xl:max-w-4xl mx-auto'>
-      {(messages || intialMessages).map((message) => (
-        <MessageComponent key={message.id} message={message}/>
+      {(messages || initialMessages).map((message) => (
+        <MessageComponent key={message.id} message={message} />
       ))}
       
     </div>

@@ -16,7 +16,7 @@ async function HomePage() {
   return (
     <Providers session={session}>
       <main>
-        <MessageList intialMessages={messages} />
+        <MessageList initialMessages={messages} />
         <ChatInput session={session}/>
       </main>
     </Providers>

@@ -36,7 +36,7 @@ async function Header() {
             <div className="flex space-x-2 items-center">
                 <Image src="https://gravatar.com/avatar/59d8f3699b35d5837e046ac62a3390c5?s=400&d=identicon&r=x" alt='Logo' height={10} width={50}/>
 
-                <p className="text-blue-400">Welcome to Hike Messenger!</p>
+                <p className="text-blue-400">Welcome to Humsab!</p>
             </div>
 
             <Link href="/auth/signin" className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'> Sign In</Link>

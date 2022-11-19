@@ -10,9 +10,9 @@ async function SignInPage() {
         <div>
           <Image
               className="rounded-full mx-2 object-cover"
-              width={70}
-              height={70}
-              src="https://i.pravatar.cc/150?img=38"
+              width={300}
+              height={50}
+              src="https://gravatar.com/avatar/59d8f3699b35d5837e046ac62a3390c5?s=400&d=identicon&r=x"
               alt="Profile Picture" />
       </div>
       

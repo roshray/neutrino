@@ -13,9 +13,10 @@ export const authOptions = {
   ],
   secret: process.env.NEXTAUTH_SECRET!,
   pages:{
-    signIn: '/auth/Signin',
+    signIn: '/auth/signin',
   }
 }
 export default NextAuth(authOptions)
 
+// https://www.vecteezy.com/vector-art/2058922-messenger-3d-icon
 

@@ -1,6 +1,15 @@
-# welcome to `humsab`
+# Welcome to `humsab`
 
-> Tech Stack
+### Auth Page
+
+![](https://github.com/roshray/neutrino/blob/main/SignIn.png)
+
+
+### Main Page
+
+![](https://github.com/roshray/neutrino/blob/main/loggedinPage.png)
+
+#### Tech Stack
 
 `Upstash`    
 
